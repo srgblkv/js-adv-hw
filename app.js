@@ -7,8 +7,20 @@ const data = [
     { id: 4, name: 'Kolya' },
     { id: 3, name: 'Kolya' },
     { id: 1, name: 'Kolya' },
-];
+]
 
-const setId = new Set([...new Map(data.map(el => [el.id, el.name]))]);
+const setObj = new Set();
 
-console.log(setId);
+data.map(el => {
+    for (const obj of setObj) {
+        if (obj.id == el.id)
+            setObj.delete(obj)
+    }
+
+    setObj.add(el)
+})
+
+
+
+console.log(setObj)
+console.log(data)
