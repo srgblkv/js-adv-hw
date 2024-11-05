@@ -1,26 +1,23 @@
 'use strict';
 
-const data = [
-    { id: 1, name: 'Vasya' },
-    { id: 2, name: 'Petya' },
-    { id: 1, name: 'Vasya' },
-    { id: 4, name: 'Kolya' },
-    { id: 3, name: 'Kolya' },
-    { id: 1, name: 'Kolya' },
-]
+function diceRoll(typeDice) {
+    const currentTypeDice = [
+        { type: 'd4', maxResult: 4 },
+        { type: 'd6', maxResult: 6 },
+        { type: 'd8', maxResult: 8 },
+        { type: 'd10', maxResult: 10 },
+        { type: 'd12', maxResult: 12 },
+        { type: 'd16', maxResult: 16 },
+        { type: 'd20', maxResult: 20 }
+    ];
 
-const setObj = new Set();
+    const type = currentTypeDice.find(e => e.type === typeDice);
 
-data.map(el => {
-    for (const obj of setObj) {
-        if (obj.id == el.id)
-            setObj.delete(obj)
+    if (type) {
+        return Math.floor(Math.random() * type.maxResult + 1)
     }
 
-    setObj.add(el)
-})
+    return null;
+}
 
-
-
-console.log(setObj)
-console.log(data)
+console.log(diceRoll('d20'));
