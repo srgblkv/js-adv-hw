@@ -15,7 +15,7 @@ const Ork = function (race, name, lang, weapon) {
     Person.call(this, race, name, lang)
     this.weapon = weapon
 }
-Ork.prototype = Person.prototype
+Ork.prototype = Object.create(Person.prototype)
 Ork.prototype.hit = function () {
     return `${this.name} hits ${this.weapon}`
 }
@@ -26,7 +26,7 @@ const Elf = function (race, name, lang, spell) {
     Person.call(this, race, name, lang)
     this.spell = spell
 }
-Elf.prototype = Person.prototype
+Elf.prototype = Object.create(Person.prototype)
 Elf.prototype.cast = function () {
     return `${this.name} casts ${this.spell}`
 }
@@ -42,3 +42,7 @@ console.log(ork.hit())
 
 console.log(elf.say())
 console.log(elf.cast())
+
+console.log(ork instanceof Person)
+console.log(ork instanceof Ork)
+console.log(ork instanceof Elf)
