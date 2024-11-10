@@ -16,6 +16,7 @@ const Ork = function (race, name, lang, weapon) {
     this.weapon = weapon
 }
 Ork.prototype = Object.create(Person.prototype)
+Ork.prototype.constructor = Ork
 Ork.prototype.hit = function () {
     return `${this.name} hits ${this.weapon}`
 }
@@ -27,6 +28,7 @@ const Elf = function (race, name, lang, spell) {
     this.spell = spell
 }
 Elf.prototype = Object.create(Person.prototype)
+Elf.prototype.constructor = Elf
 Elf.prototype.cast = function () {
     return `${this.name} casts ${this.spell}`
 }
